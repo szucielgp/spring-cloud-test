@@ -7,6 +7,9 @@
     <groupId>com.kd.gavin</groupId>
     <artifactId>spring-cloud-test-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>../service-eureka-client</module>
+    </modules>
     <packaging>pom</packaging>
 
     <parent>
