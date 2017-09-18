@@ -1,0 +1,12 @@
+server:
+  port: 8189
+
+eurek:
+  instance:
+    hostname：localhost# 主机名
+  client:
+    fetch-registry: false  # 是否检索服务。该应用为服务注册中心，职责为注册和发现服务，无需检索服务，设置为 false
+    register-with-eureka: false
+  server:
+    wait-time-in-ms-when-sync-empty: 0 # 是否向 Eureka 注册服务。该应用为服务注册中心，不需要自注册，设置为 false
+
