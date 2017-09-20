@@ -10,13 +10,15 @@
     <modules>
         <module>../service-eureka-client</module>
         <module>../spring-cloud-consume</module>
+        <module>../service-discovery-two</module>
+        <module>../service-discovery-cluster</module>
     </modules>
     <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.6.RELEASE</version>
+        <version>1.5.3.RELEASE</version>
     </parent>
 
     <properties>
