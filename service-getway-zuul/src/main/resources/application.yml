@@ -1,0 +1,15 @@
+server:
+  port: 10004
+spring:
+  application:
+    name: service-getway-zuul
+zuul:
+  routes:
+    it:
+      path: /it/**
+      #url:  http://www.baidu.com/
+      serviceId: SERVICE-HELLO #错误，字母拼错了
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8189/eureka/

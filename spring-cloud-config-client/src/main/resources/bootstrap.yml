@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    config:
+      name: cloud-config
+      profile: prod
+      #uri: http://localhost:10001/  #但是这样耦合度太高，server端改变IP地址的时候，客户端也需要修改配置，不符合springcloud服务治理的理念
+      label: master
+      discovery:
+        enabled: true
+        service-id: spring-cloud-config-server
+#优先在bootstrap中配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8189/eureka/

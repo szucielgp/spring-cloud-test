@@ -1,0 +1,17 @@
+server:
+  port: 10001
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/szucielgp/spring-cloud-test.git # 注意配置的时候加空格，不然识别不到
+          search-paths: config-repo
+          username: #git账号
+          password: #git密码
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8189/eureka/
