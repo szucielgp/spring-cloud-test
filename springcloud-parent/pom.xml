@@ -12,6 +12,7 @@
         <module>../spring-cloud-consume</module>
         <module>../service-discovery-two</module>
         <module>../service-discovery-cluster</module>
+        <module>../spring-cloud-config-server</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -30,7 +31,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Dalston.SR1</version>
+                <version>Dalston.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

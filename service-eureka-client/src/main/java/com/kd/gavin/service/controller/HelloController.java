@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -28,5 +29,10 @@ public class HelloController {
     public String hello(){
         this.logger.info("/hello, instanceId:{}, host:{}", eurekaInstanceConfig.getInstanceId(), eurekaInstanceConfig.getHostName(false));
         return "Hello, Spring Cloud! My port is " + String.valueOf(serverPort);
+    }
+
+    @RequestMapping(value = "/hello1")
+    public String hello(@RequestParam String name){
+        return "hello"+name;
     }
 }
