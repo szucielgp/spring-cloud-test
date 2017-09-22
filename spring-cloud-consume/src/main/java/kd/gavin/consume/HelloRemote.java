@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * @dicription
  */
-// @FeignClient(name = "SERVICE-HELLO")
+@FeignClient(name = "SERVICE-HELLO")
 public interface HelloRemote {
     @RequestMapping(value = "/hello1")
     public String hello(@RequestParam(value = "name") String name);

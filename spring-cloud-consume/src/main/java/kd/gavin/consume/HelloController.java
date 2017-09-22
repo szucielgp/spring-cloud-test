@@ -19,16 +19,16 @@ public class HelloController {
     @Autowired
     private RestTemplate restTemplate;
 
-   /* @Autowired
-    private HelloRemote helloRemote;*/
+    @Autowired
+    private HelloRemote helloRemote;
 
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     public String hello(){
         return restTemplate.getForEntity("http://SERVICE-HELLO/hello",String.class).getBody();
     }
 
-    /*@RequestMapping("/hello/{name}")
+    @RequestMapping("/hello/{name}")
     public String index(@PathVariable("name") String name) {
         return helloRemote.hello(name);
-    }*/
+    }
 }

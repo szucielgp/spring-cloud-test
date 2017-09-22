@@ -32,7 +32,7 @@ public class HelloController {
     }
 
     @RequestMapping(value = "/hello1")
-    public String hello(@RequestParam String name){
+    public String hello(@RequestParam String name){//http://localhost:8200/hello1?name=aa RequestParam
         return "hello"+name;
     }
 }
