@@ -22,6 +22,10 @@ public class HelloController {
     @Autowired
     private HelloRemote helloRemote;
 
+    //断路器测试
+    @Autowired
+    private HelloService helloService;
+
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     public String hello(){
         return restTemplate.getForEntity("http://SERVICE-HELLO/hello",String.class).getBody();
@@ -30,5 +34,10 @@ public class HelloController {
     @RequestMapping("/hello/{name}")
     public String index(@PathVariable("name") String name) {
         return helloRemote.hello(name);
+    }
+
+    @RequestMapping(value = "/ribbon-consume",method = RequestMethod.GET)
+    public String hello1(){
+        return helloService.helloService();
     }
 }
