@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by kd_gavin on 2017/9/19,12:28.
  *
@@ -26,7 +29,8 @@ public class HelloController {
     private int serverPort = 0;
 
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
-    public String hello(){
+    public String hello(HttpServletRequest request){
+        Cookie[] cookies = request.getCookies();//经过zuul网关，这里是取不到cookie的，通过sensitive-headers 可以去到cookie的值
         this.logger.info("/hello, instanceId:{}, host:{}", eurekaInstanceConfig.getInstanceId(), eurekaInstanceConfig.getHostName(false));
         return "Hello, Spring Cloud! My port is " + String.valueOf(serverPort);
     }

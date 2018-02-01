@@ -3,13 +3,48 @@ server:
 spring:
   application:
     name: service-getway-zuul
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
 zuul:
   routes:
     it:
       path: /it/**
       #url:  http://www.baidu.com/
       serviceId: SERVICE-HELLO #错误，字母拼错了
+    #注意 zuul,跟routes不用重复定义
+#    按照顺序优先执行多一层的匹配
+    api-a-url-a:
+      path: /api-a-url/a/**
+      url: http://localhost:8201/
+    api-a-url-b:
+      path: /api-a-url/b/**
+      #转化到本地请求/local开头的去
+      url:  forward:/local
+    api-a-url:
+      path: /api-a-url/**
+      url: http://localhost:8200/
+#      可以针对某个匹配进行敏感信息的传递
+      sensitive-headers:
+#  全局配置覆盖默认值，这样传递cookie，但是不安全。
+#  sensitive-headers:
+
+# 添加前缀，但是添加前缀带参数的时候无法跳转
+#  prefix: /api
+#  strip-prefix: false
+
+#      配置忽略
+#  ignored-patterns: /**/hello/**
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8189/eureka/
+#ribbon:
+#  eureka:
+#    enabled: false
+
+#user-service:
+#    ribbon:
+#      listOfServers:  http://localhost:8200/, http://localhost:8201/
