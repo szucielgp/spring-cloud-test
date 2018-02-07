@@ -36,6 +36,7 @@ public class HelloController {
         return helloRemote.hello(name);
     }
 
+    /*断路器测试*/
     @RequestMapping(value = "/ribbon-consume",method = RequestMethod.GET)
     public String hello1(){
         return helloService.helloService();
