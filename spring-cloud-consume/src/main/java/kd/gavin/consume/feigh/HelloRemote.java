@@ -1,4 +1,4 @@
-package kd.gavin.consume;
+package kd.gavin.consume.feigh;
 
 import com.kd.gavin.po.User;
 import org.springframework.cloud.netflix.feign.FeignClient;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * Created by kd_gavin on 2017/9/21,9:22.
  *
- * @dicription
+ * @dicription @FeignClient(name = "SERVICE-HELLO") 这里就相当于是给Hystrix划定了一个线程池
  */
 @FeignClient(name = "SERVICE-HELLO")
 public interface HelloRemote {

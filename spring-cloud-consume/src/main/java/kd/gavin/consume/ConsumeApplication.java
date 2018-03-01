@@ -2,6 +2,7 @@ package kd.gavin.consume;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
@@ -10,9 +11,11 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
  *
  * @dicription
  */
-@SpringBootApplication
+
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableCircuitBreaker
+@SpringBootApplication
 public class ConsumeApplication {
 
 
@@ -25,4 +28,19 @@ public class ConsumeApplication {
     public static void main(String[] args) {
         SpringApplication.run(ConsumeApplication.class,args);
     }
+
+   /* @Bean
+    public Feign.Builder feignHystrixBuilder() {
+        return HystrixFeign.builder().setterFactory(new SetterFactory() {
+            @Override
+            public HystrixCommand.Setter create(Target<?> target, Method method) {
+                return HystrixCommand.Setter
+                        // 控制 RemoteProductService 下,所有方法的Hystrix Configuration, 超时配置
+                        .withGroupKey(HystrixCommandGroupKey.Factory.asKey("hello-service-1"))
+                        .andCommandPropertiesDefaults(
+                                HystrixCommandProperties.Setter().withExecutionTimeoutInMilliseconds(1000)
+                        );
+            }
+        });
+    }*/
 }

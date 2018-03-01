@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: consume-hello-1
+server:
+  port: 8195
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:8189/eureka/
+
+#显式的指定为true,开启hystrix
+feign:
+  hystrix:
+     enabled: true
+
+#不同线程池数量配置
+hystrix:
+   threadpool:
+      hello-service-1:
+         coreSize: 15
+      default:
+         coreSize: 10
+#   针对某个方法设置超时时间
+   command:
+       "HelloRemote1#hello()":
+                execution:
+                   isolation:
+                       thread:
+                         timeoutInMilliseconds: 1
+       default:
+         execution:
+             isolation:
+                 thread:
+                   timeoutInMilliseconds: 1000
+
+

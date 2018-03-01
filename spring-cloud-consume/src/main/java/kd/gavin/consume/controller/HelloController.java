@@ -1,7 +1,7 @@
-package kd.gavin.consume;
+package kd.gavin.consume.controller;
 
+import kd.gavin.consume.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,9 +19,6 @@ public class HelloController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
-    private HelloRemote helloRemote;
-
     //断路器测试
     @Autowired
     private HelloService helloService;
@@ -31,14 +28,17 @@ public class HelloController {
         return restTemplate.getForEntity("http://SERVICE-HELLO/hello",String.class).getBody();
     }
 
-    @RequestMapping("/hello/{name}")
-    public String index(@PathVariable("name") String name) {
-        return helloRemote.hello(name);
-    }
+
 
     /*断路器测试*/
     @RequestMapping(value = "/ribbon-consume",method = RequestMethod.GET)
     public String hello1(){
         return helloService.helloService();
+    }
+
+    /*断路器测试*/
+    @RequestMapping(value = "/ribbon-consume-user",method = RequestMethod.GET)
+    public String helloUser(){
+        return helloService.helloUser();
     }
 }

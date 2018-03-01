@@ -3,7 +3,7 @@ package kd.gavin.consume.command;
 
 import com.kd.gavin.po.User;
 import com.netflix.hystrix.HystrixCommand;
-import kd.gavin.consume.HelloRemote;
+import kd.gavin.consume.feigh.HelloRemote;
 import org.springframework.web.client.RestTemplate;
 
 /**

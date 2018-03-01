@@ -1,9 +1,10 @@
-package kd.gavin.consume;
+package kd.gavin.consume.controller;
 
 import com.kd.gavin.po.User;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import kd.gavin.consume.command.UserCommand;
+import kd.gavin.consume.feigh.HelloRemote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
