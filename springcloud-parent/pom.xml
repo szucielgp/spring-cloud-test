@@ -13,6 +13,7 @@
         <module>../service-discovery-two</module>
         <module>../service-discovery-cluster</module>
         <module>../spring-cloud-config-server</module>
+        <module>../hystrix-turbine-ampq</module>
     </modules>
     <packaging>pom</packaging>
 

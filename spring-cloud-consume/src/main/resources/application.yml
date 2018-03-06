@@ -1,6 +1,11 @@
 spring:
   application:
     name: consume-hello-1
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 server:
   port: 8195
 eureka:
@@ -19,7 +24,7 @@ hystrix:
       hello-service-1:
          coreSize: 15
       default:
-         coreSize: 10
+         coreSize: 12
 #   针对某个方法设置超时时间
    command:
        "HelloRemote1#hello()":
@@ -31,6 +36,6 @@ hystrix:
          execution:
              isolation:
                  thread:
-                   timeoutInMilliseconds: 1000
+                   timeoutInMilliseconds: 2000
 
 

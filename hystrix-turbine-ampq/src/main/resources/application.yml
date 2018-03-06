@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: turbine-amqp
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8189/eureka/
+server:
+  port: 8199
+
+turbine:
+  app-config: consume-hello,consume-hello-1
+#  这里不能直接写default
+  cluster-name-expression: new String('default')
+  combine-host-port: true
+
+
