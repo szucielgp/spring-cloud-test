@@ -10,7 +10,7 @@ server:
   port: 8193
 
 turbine:
-  app-config: consume-hello,consume-hello-1
+  app-config: consume-hello,consume-hello-1,consume-hello-kafka
 #  这里不能直接写default
   cluster-name-expression: new String('default')
   combine-host-port: true

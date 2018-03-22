@@ -1,0 +1,56 @@
+server:
+  port: 8306
+
+spring:
+  application:
+    name: consume-hello-kafka
+    management:
+        # 配置Spring Boot Actuator的端口
+        port: 8990
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+  cloud:
+    stream:
+      kafka:
+        binder:
+           zk-nodes: 193.112.127.76:2181
+           brokers: 193.112.127.76:9092
+
+eureka:
+  instance:
+      prefer-ip-address: true
+      instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+        # 务必跟server.port的配置保持一致
+      non-secure-port: 8306
+  client:
+       service-url:
+         defaultZone: http://localhost:8189/eureka/
+#显式的指定为true,开启hystrix
+feign:
+  hystrix:
+     enabled: true
+
+#不同线程池数量配置
+hystrix:
+   threadpool:
+      hello-service-1:
+         coreSize: 15
+      default:
+         coreSize: 12
+#   针对某个方法设置超时时间
+   command:
+       "HelloRemote1#hello()":
+                execution:
+                   isolation:
+                       thread:
+                         timeoutInMilliseconds: 1
+       default:
+         execution:
+             isolation:
+                 thread:
+                   timeoutInMilliseconds: 2000
+
+

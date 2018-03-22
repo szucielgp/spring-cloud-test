@@ -1,0 +1,32 @@
+server:
+  port: 8303
+  management:
+    # 配置Spring Boot Actuator的端口
+    port: 8990
+
+spring:
+  application:
+    name: turbine-kafka
+    index: ${random.long}
+  cloud:
+    stream:
+      kafka:
+        binder:
+           zk-nodes: 193.112.127.76:2181
+           brokers: 193.112.127.76:9092
+
+eureka:
+  client:
+    service-url:
+       defaultZone: http://localhost:8189/eureka/
+    instance:
+       prefer-ip-address: true
+        # 务必跟server.port的配置保持一致
+       non-secure-port: 8303
+turbine:
+  app-config: consume-hello,consume-hello-1
+#  这里不能直接写default
+  cluster-name-expression: new String('default')
+  combine-host-port: true
+
+

@@ -12,6 +12,7 @@
         <module>hystrix-dashboard</module>
         <module>hystrix-turbine</module>
         <module>common-params</module>
+        <module>spring-cloud-consume-kafka</module>
     </modules>
 
 
